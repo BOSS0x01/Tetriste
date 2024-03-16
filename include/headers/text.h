@@ -2,8 +2,8 @@
 
 #ifndef TEXT_H
 #define TEXT_H
-#include <sdl2/SDL.h>
-#include <sdl2/SDL_ttf.h>
+#include <SDL.h>
+#include <SDL_ttf.h>
 #include <iostream>
 class Text
 {

@@ -1,4 +1,3 @@
-#pragma once
 
 #ifndef SHAPE_H
 #define SHAPE_H
@@ -6,7 +5,7 @@
 #include <time.h>
 #include <cstdlib>
 #include <iostream>
-#include "sdl2/SDL_image.h"
+#include <SDL_image.h>
 #include "constants.h"
 #include "window.h"
 enum class color

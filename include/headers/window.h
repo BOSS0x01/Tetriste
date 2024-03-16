@@ -1,9 +1,9 @@
 #pragma once
 #ifndef WINDOW_H
 #define WINDOW_H
-#include <./sdl2/SDL.h>
-#include <./sdl2/SDL_ttf.h>
-#include <./sdl2/SDL_image.h>
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include <SDL_image.h>
 #include <iostream>
 class Window
 {

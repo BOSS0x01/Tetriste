@@ -11,11 +11,11 @@
 #define _GRAPHICS_H
 //-------------------------------------------------------------------
 #include <string>
-#include <iostream>
+#include <stdio.h>
 //-------------------------------------------------------------------
-#include <sdl2/SDL.h>
-#include <sdl2/SDL_image.h>
-#include <sdl2/SDL_ttf.h>
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
 //-------------------------------------------------------------------
 // QuickSDL
 //-------------------------------------------------------------------
@@ -29,11 +29,13 @@ namespace QuickSDL
 
 	public:
 		// The Width of the game's window
-		const int SCREEN_WIDTH = 1024;
+		const int SCREEN_WIDTH = 1280;
 		// The Height of the game's window
-		const int SCREEN_HEIGHT = 600;
+		const int SCREEN_HEIGHT = 640;
 		// The title of the game's window
 		const char *WINDOW_TITLE = "Tetris";
+
+		const int GRID_BOX = 48;
 
 	private:
 		// Needed to make GameManager a singleton class
@@ -53,7 +55,7 @@ namespace QuickSDL
 		//--------------------------------------------
 		static Graphics *Instance();
 		//--------------------------------------------------------
-		// Releases the class instance and sets it back to nullptr
+		// Releases the class instance and sets it back to NULL
 		// Sets Initialized to false
 		//--------------------------------------------------------
 		static void Release();
@@ -82,7 +84,7 @@ namespace QuickSDL
 		//------------------------------------------------
 		// Draws the given texture to the back buffer
 		//------------------------------------------------
-		void DrawTexture(SDL_Texture *tex, SDL_Rect *clip = nullptr, SDL_Rect *rend = nullptr, float angle = 0.0f, SDL_RendererFlip flip = SDL_FLIP_NONE);
+		void DrawTexture(SDL_Texture *tex, SDL_Rect *clip = NULL, SDL_Rect *rend = NULL, float angle = 0.0f, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 		//----------------------------------------------------
 		// Refreshes the back buffer
