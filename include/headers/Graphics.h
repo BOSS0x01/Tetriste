@@ -35,7 +35,8 @@ namespace QuickSDL
 		// The title of the game's window
 		const char *WINDOW_TITLE = "Tetris";
 
-		const int GRID_BOX = 48;
+		const int GRID_BOX = 64;
+		const int GRID_GAP = GRID_BOX / 4;
 
 	private:
 		// Needed to make GameManager a singleton class

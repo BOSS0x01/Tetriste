@@ -1,6 +1,5 @@
 #pragma once
-#ifndef NODE_H
-#define NODE_H
+
 #include <iostream>
 template <typename T>
 class Node
@@ -10,10 +9,9 @@ private:
 
     Node<T> *next;
     Node<T> *prev;
-    // static int nbrNodeCreated;
+    int mPosIndex;
 
 public:
-    int id = 0;
     Node();
     Node(T *data);
     ~Node();
@@ -25,6 +23,9 @@ public:
 
     void setData(T *data);
     T *getData();
+
+    int getPositionIndex();
+    void setPositionIndex(int);
 };
 
 template <typename T>
@@ -70,6 +71,17 @@ T *Node<T>::getData()
 }
 
 template <typename T>
+int Node<T>::getPositionIndex()
+{
+    return mPosIndex;
+}
+template <typename T>
+void Node<T>::setPositionIndex(int newPosIndex)
+{
+    mPosIndex = newPosIndex;
+}
+
+template <typename T>
 Node<T>::~Node()
 {
     if (data != nullptr)
@@ -79,4 +91,3 @@ Node<T>::~Node()
     if (prev != nullptr)
         delete prev;
 }
-#endif

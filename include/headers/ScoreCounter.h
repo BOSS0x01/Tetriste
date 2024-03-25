@@ -7,9 +7,12 @@ class ScoreCounter : public GameEntity
 {
 private:
     std::vector<Texture *> mScore;
+    int mFontSize, mCurrentScore;
 
 public:
-    ScoreCounter();
+    ScoreCounter(int fontSize = 32);
+    ScoreCounter(int score, int fontSize);
+
     ~ScoreCounter();
 
     void setScore(int);

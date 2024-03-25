@@ -5,42 +5,50 @@
 #include <time.h>
 #include <cstdlib>
 #include <iostream>
-#include <SDL_image.h>
-#include "constants.h"
-#include "window.h"
-enum class color
+#include "Texture.h"
+
+using namespace QuickSDL;
+enum ShapeColor
 {
-    red,
-    yellow,
-    green,
-    blue
+    RED,
+    YELLOW,
+    GREEN,
+    PURPLE
 };
-enum shapeType
+enum ShapeType
 {
-    rectangle,
-    cercle,
-    triangle,
-    rhombus
+    SQUARE = 4,
+    CERCLE = 5,
+    TRIANGLE = 6,
+    RHOMBUS = 7
 };
 
-class Shape
+class Shape : public GameEntity
 {
 private:
-    mutable SDL_Rect _shape;
-    SDL_Texture *_shapeTexture;
-    int _r, _g, _b, _a;
-    int _x, _y, _w, _h, color, type;
-    std::string _textureUrl;
-    int randomGenerator();
+    int mWidth, mHeight;
+    Texture *mShape;
+    ShapeType mType;
+    ShapeColor mColor;
+ 
 
 public:
-    Shape(int, int, int, int, const char *);
-    Shape(int x, int, int, int, int, int, int, int);
+    std::string InitType(ShapeType) const;
+    void InitColor(ShapeColor);
+    ShapeColor getShapeColor();
+    ShapeType getShapeType();
+
+
+private:
+public:
+    Shape(ShapeType, ShapeColor);
+    Shape(int, int, ShapeType, ShapeColor);
     ~Shape();
-    void draw() const;
-    void handleEvents(SDL_Event &);
-    std::string toString();
+    void Render();
+    void Update();
+
     friend bool operator==(const Shape &, const Shape &);
+    friend std::ostream &operator<<(std::ostream &, const Shape &);
 };
 
 #endif

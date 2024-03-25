@@ -1,6 +1,5 @@
 #pragma once
-#ifndef WINDOW_H
-#define WINDOW_H
+
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
@@ -25,4 +24,3 @@ private:
     SDL_Event event;
     bool init();
 };
-#endif

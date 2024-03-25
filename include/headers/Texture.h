@@ -47,8 +47,9 @@ namespace QuickSDL
 		//--------------------------------------------------------------
 		// Loads a whole texture from a file (relative to the exe path)
 		// Note: For spritesheets use the other contructor
+		// if loadedOnce is true the texture will be loaded only once
 		//--------------------------------------------------------------
-		Texture(std::string filename);
+		Texture(std::string filename, bool loadedOnce = true);
 		//-------------------------------------------------------------
 		// Loads a texture from from file (relative to the exe path)
 		// Supports spritesheets
@@ -71,6 +72,10 @@ namespace QuickSDL
 		// change texture color
 		//----------------------------------------------
 		void setTextureColor(Uint8, Uint8, Uint8);
+		//----------------------------------------------
+		// sets the transparency for the texture
+		//----------------------------------------------
+		void setAlpha(Uint8 alpha);
 		//----------------------------------------------
 		// Getters for width and height
 		//----------------------------------------------

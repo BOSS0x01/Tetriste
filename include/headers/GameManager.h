@@ -32,7 +32,7 @@ namespace QuickSDL
         static GameManager *sInstance;
 
         // The target frame rate of the game
-        const int FRAME_RATE = 120;
+        const int FRAME_RATE = 60;
         const float FRAME_TARGET_TIME = 1.0f / FRAME_RATE;
         // Used to exit the game loop
         bool mQuit;

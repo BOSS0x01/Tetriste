@@ -1,12 +1,12 @@
 #pragma once
-#ifndef DOUBLYLINKEDLIST_H
-#define DOUBLYLINKEDLIST_H
+
 #include <iostream>
 #include "Node.h"
 // You cannot separate the declaration and the definition when working with templates
 template <typename T>
 class DoublyLinkedList
 {
+protected:
     int size;
     Node<T> *head;
     Node<T> *tail;
@@ -25,19 +25,21 @@ public:
     Node<T> *removeBack();
     Node<T> *removeNode(Node<T> *);
 
-    void offsetLeft();
-
     bool isEmpty();
     Node<T> *search(T *);
+    Node<T> *getFrontNode(int i);
+    Node<T> *getBackNode(int i);
 
+    T *getFront(int);
+    T *getBack(int);
     int getSize() const;
 
     Node<T> *getHead() const;
     void setHead(Node<T> *);
-
+    Node<T> *getFirstEelement() const;
     Node<T> *getTail() const;
     void setTail(Node<T> *);
-
+    void replaceData(Node<T> *, Node<T> *);
     void display();
 };
 
@@ -57,6 +59,7 @@ template <typename T>
 void DoublyLinkedList<T>::insertFront(T *data)
 {
     Node<T> *newNode = new Node<T>(data);
+    newNode->setPositionIndex(0);
     newNode->setNext(head->getNext());
     newNode->setPrev(head);
     head->getNext()->setPrev(newNode);
@@ -68,6 +71,7 @@ template <typename T>
 void DoublyLinkedList<T>::insertBack(T *data)
 {
     Node<T> *newNode = new Node<T>(data);
+    newNode->setPositionIndex(0);
     newNode->setNext(tail);
     newNode->setPrev(tail->getPrev());
     tail->getPrev()->setNext(newNode);
@@ -148,20 +152,76 @@ Node<T> *DoublyLinkedList<T>::search(T *data)
     }
     return nullptr;
 }
+
 template <typename T>
-void DoublyLinkedList<T>::offsetLeft()
+T *DoublyLinkedList<T>::getFront(int i)
 {
-    Node<T> *firstElement = head->getNext();
-    head->setNext(firstElement->getNext());
-    tail->getPrev()->setNext(firstElement);
-    firstElement->setPrev(tail->getPrev());
-    firstElement->setNext(tail);
-    tail->setPrev(firstElement);
+    int counter = 0;
+    Node<T> *currentNode = head;
+
+    while (currentNode != tail && counter++ <= i)
+    {
+        currentNode = currentNode->getNext();
+    }
+
+    return currentNode->getData();
 }
+
+template <typename T>
+T *DoublyLinkedList<T>::getBack(int i)
+{
+    int counter = 0;
+    Node<T> *currentNode = tail;
+
+    while (currentNode != head && counter++ <= i)
+    {
+        currentNode = currentNode->getPrev();
+    }
+
+    return currentNode->getData();
+}
+
+template <typename T>
+Node<T> *DoublyLinkedList<T>::getFrontNode(int i)
+{
+    int counter = 0;
+    Node<T> *currentNode = head;
+
+    while (currentNode != tail && counter++ <= i)
+    {
+        currentNode = currentNode->getNext();
+    }
+
+    return currentNode;
+}
+
+template <typename T>
+Node<T> *DoublyLinkedList<T>::getBackNode(int i)
+{
+    int counter = 0;
+    Node<T> *currentNode = tail;
+
+    while (currentNode != head && counter++ <= i)
+    {
+        currentNode = currentNode->getPrev();
+    }
+
+    return currentNode;
+}
+
+template <typename T>
+void DoublyLinkedList<T>::replaceData(Node<T> *nodeToReplace, Node<T> *newNode)
+{
+    nodeToReplace->setData(newNode->getData());
+}
+
 template <typename T>
 Node<T> *DoublyLinkedList<T>::getHead() const { return head; }
 template <typename T>
 void DoublyLinkedList<T>::setHead(Node<T> *newHead) { this->head = newHead; }
+
+template <typename T>
+Node<T> *DoublyLinkedList<T>::getFirstEelement() const { return head->getNext()->getData(); }
 
 template <typename T>
 Node<T> *DoublyLinkedList<T>::getTail() const { return tail; }
@@ -179,9 +239,10 @@ void DoublyLinkedList<T>::display()
         Node<T> *currentNode = head->getNext();
         while (currentNode != tail)
         {
-            std::cout << *currentNode->getData() << "\t";
+            std::cout << "PosIndex:" << currentNode->getPositionIndex() << " " << *currentNode->getData() << "\t";
             currentNode = currentNode->getNext();
         }
+        std::cout << "\n\n\n";
     }
     else
     {
@@ -204,4 +265,3 @@ DoublyLinkedList<T>::~DoublyLinkedList()
         delete removeFront();
     }
 }
-#endif

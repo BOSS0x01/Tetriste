@@ -3,14 +3,18 @@
 #include "Timer.h"
 #include "InputManager.h"
 #include "PlaySideBar.h"
+#include "Board.h"
 using namespace QuickSDL;
 
 class PlayScreen : public GameEntity
 {
 private:
-    PlayScreen *mSideBar;
+    PlaySideBar *mSideBar;
     Timer *mTimer;
     InputManager *mInputMgr;
+    Board *mBoard;
+    Texture *mControls;
+    bool isPaused = true;
 
 public:
     PlayScreen();

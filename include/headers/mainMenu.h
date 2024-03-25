@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "InputManager.h"
 #include "ScoreCounter.h"
+#include "AudioManager.h"
 using namespace QuickSDL;
 
 enum TitleIndexes
@@ -24,10 +25,11 @@ private:
     // Handling inputs
     InputManager *mInputMgr;
 
-    // Specifies the selected modes
-    int mSelectedmode = -1;
+    // Handling audio
+    AudioManager *mAudioMgr;
 
-    ScoreCounter *Score;
+    // Specifies the selected modes
+    int mSelectedmode = 0;
 
 public:
     MainMenu();

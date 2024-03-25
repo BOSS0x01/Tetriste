@@ -1,5 +1,7 @@
 #pragma once
 #include "mainMenu.h"
+#include "PlayScreen.h"
+#include "AudioManager.h"
 
 class ScreenManager
 {
@@ -10,9 +12,11 @@ private:
         Play
     };
     static ScreenManager *sInstance;
-    MainMenu *mMainMenu;
     InputManager *mInputMgr;
+    MainMenu *mMainMenu;
+    PlayScreen *mPlayScreen;
     Screens mCurrentScreen = Menu;
+    AudioManager *mAudioMgr;
 
 public:
     static ScreenManager *Instance();
